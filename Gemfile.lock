@@ -31,8 +31,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fast_jsonparser
-  httparty
+  fast_jsonparser (~> 0.6.0)
+  httparty (~> 0.22.0)
   rage-rb (~> 1.1)
 
 BUNDLED WITH
