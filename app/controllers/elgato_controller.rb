@@ -10,9 +10,9 @@ class ElgatoController < ApplicationController
       headers = { 'Content-Type': 'application/json' }
       response = HTTParty.put(URI("#{HOST}/lights"), body: body.to_json, headers: headers)
       #response = Fiber.await([Fiber.schedule { HTTParty.put(URI("#{HOST}/lights"), body: body.to_json, headers: headers) }])
-      render json: { page: response, metadata: @metadata }
+      render json: { message: response, metadata: @metadata }
     else
-      render json: { message: 'Parameter missing or incorect'}, status: 400
+      render json: { error: 'Parameter missing or incorect'}, status: 400
     end
   end
 

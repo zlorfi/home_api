@@ -1,12 +1,5 @@
 source "https://rubygems.org"
 
+gem "fast_jsonparser", "~> 0.6.0"
+gem "httparty", "~> 0.22.0"
 gem "rage-rb", "~> 1.1"
-gem "pry"
-gem "httparty"
-
-# Build JSON APIs with ease
-# gem "alba"
-
-# Get 50% to 150% boost when parsing JSON.
-# Rage will automatically use FastJsonparser if it is available.
-# gem "fast_jsonparser"
