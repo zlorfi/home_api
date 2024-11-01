@@ -3,7 +3,7 @@ Rage.configure do
   # config.server.workers_count = ENV.fetch("WEB_CONCURRENCY", 1).to_i
 
   # Specify the port the server will listen on.
-  config.server.port = 3000
+  config.server.port = 3003
 
   # Specify the logger
   config.logger = Rage::Logger.new(STDOUT)

@@ -10,6 +10,6 @@ RUN bundle install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3003
 
 CMD ["/usr/local/bundle/bin/rage", "server", "-e","production", "-b", "0.0.0.0"]
