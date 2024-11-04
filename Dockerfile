@@ -12,4 +12,5 @@ COPY . .
 
 EXPOSE 3003
 
-ENTRYPOINT ["/usr/local/bundle/bin/rage", "server", "-e","production", "-b", "0.0.0.0"]
+# ENTRYPOINT ["/usr/local/bundle/bin/rage", "server", "-e","production", "-b", "0.0.0.0"]
+# CMD ["/usr/local/bundle/bin/rage", "server", "-e","production", "-b", "0.0.0.0"]
