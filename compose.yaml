@@ -2,7 +2,6 @@ services:
   home_api:
     container_name: home_api
     image: zlorfi/home_api:latest
-    command: 'bundle exec rage s -b 0.0.0.0'
     ports:
       - '3000:3003/tcp'
     environment:
