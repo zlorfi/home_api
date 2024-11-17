@@ -1,0 +1,250 @@
+openapi: 3.1.0
+info:
+  title: home-api
+  version: '1.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /elgato/toggle:
+    put:
+      summary: Elgato toggle
+      operationId: put-elgato-toggle
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      numberOfLights:
+                        type: integer
+                        example: 1
+                      lights:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            'on':
+                              type: integer
+                              example: 1
+                              maximum: 1
+                              minimum: 0
+                            brightness:
+                              type: integer
+                              minimum: 0
+                              maximum: 100
+                              example: 55
+                            temperature:
+                              type: integer
+                              example: 175
+                  metadata:
+                    type: object
+                    properties:
+                      format:
+                        type: string
+                        example: json
+                      time:
+                        type: integer
+                        example: 1731849300
+                        description: UNIX timestamp
+              examples:
+                Example 1:
+                  value:
+                    message:
+                      numberOfLights: 1
+                      lights:
+                        - 'on': 1
+                          brightness: 55
+                          temperature: 175
+                    metadata:
+                      format: json
+                      time: 1731849300
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    default: '''Can not request toggle state'''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                brightness:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                  default: 55
+            examples:
+              Example 1:
+                value:
+                  brightness: 55
+      description: Toggle between on and off state
+  /pihole/disable:
+    put:
+      summary: PiHole disable
+      operationId: put-pihole-disable
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        example: disabled
+                  metadata:
+                    type: object
+                    properties:
+                      format:
+                        type: string
+                        default: json
+                      time:
+                        type: integer
+                        example: 1731849300
+                        description: UNIX timestamp
+              examples:
+                Example 1:
+                  value:
+                    message:
+                      status: disabled
+                    metadata:
+                      format: json
+                      time: 1731849300
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    default: '''Can not request toggle state'''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                duration:
+                  type: integer
+                  minimum: 1
+                  default: 300
+                  maximum: 3600
+              required:
+                - duration
+            examples:
+              Example 1:
+                value:
+                  duration: 300
+      description: Disable for a duration of x seconds
+    parameters: []
+  /wled/toggle:
+    put:
+      summary: WLED toggle
+      operationId: put-wled-toggle
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      success:
+                        type: boolean
+                        default: true
+                  metadata:
+                    type: object
+                    properties:
+                      format:
+                        type: string
+                        default: json
+                      time:
+                        type: integer
+                        example: 1731849300
+                        description: UNIX timestamp
+              examples:
+                Example 1:
+                  value:
+                    message:
+                      success: true
+                    metadata:
+                      format: json
+                      time: 1731849300
+        '400':
+          description: Bad Request
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    default: '''Can not request toggle state'''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                brightness:
+                  type: integer
+                  minimum: 1
+                  maximum: 100
+                  default: 55
+                  example: 22
+            examples:
+              Example 1:
+                value:
+                  brightness: 55
+      description: Toggle between on and off state
+    parameters: []
+components:
+  schemas: {}
+  requestBodies:
+    PUT_toggle:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              brightness:
+                type: integer
+                example: 20
+                default: 55
+                minimum: 0
+                maximum: 100
+          examples:
+            Example 1:
+              value:
+                brightness: 55
+  responses: {}
+  securitySchemes: {}
